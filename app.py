@@ -1,6 +1,10 @@
-from flask import Flask, render_template, url_for, redirect, request
+from flask import Flask, render_template, redirect, url_for, request
+from user_agents import parse
 
 app = Flask(__name__)
+
+# Liste, um Besucherinformationen zu speichern
+visitors = []
 
 @app.route('/')
 def home():
@@ -13,53 +17,54 @@ def home():
         show_apps=True
     )
 
-@app.route('/windows')
-def windows():
-    return render_template(
-        "windows.html",
-        title="Windows-Apps",
-        header_content="Entdecken Sie die besten Windows-Anwendungen, die ich entwickelt habe.",
-        main_content="Diese Seite enthält alle Apps, die ich für Windows entwickelt habe.",
-        header_image="windows.jpg",
-        show_apps=False
-    )
-
 @app.route('/macos')
 def macos():
-    return render_template(
-        "macos.html",
-        title="MacOS-Apps",
-        header_content="Hier finden Sie meine speziell für MacOS entwickelten Anwendungen.",
-        main_content="Meine MacOS-Apps bieten eine nahtlose Benutzererfahrung.",
-        header_image="macos.jpg",
-        show_apps=False,
-        download_link=url_for('static', filename='downloads/gravital.dmg')
-    )
+    return render_template("macos.html")
+
+@app.route('/windows')
+def windows():
+    return render_template("windows.html")
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    error = None
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-
-        if username == 'Jonathan' and password == 'Rj.120207':
+        if username == "Jonathan" and password == "Rj.120207":
             return redirect('/jonathan')
         else:
-            return "Login fehlgeschlagen, bitte versuche es erneut."
-
-    return render_template('login.html')
+            error = "Eingabe prüfen"
+    return render_template('login.html', error=error)
 
 @app.route('/jonathan')
 def jonathan():
-    return render_template(
-        "jonathan.html",
-        title="Jonathan's Dashboard",
-        header_content="Willkommen Jonathan! Hier siehst du deine private Dashboard-Seite.",
-        main_content="Dies ist deine personalisierte Seite, die Informationen und Logs anzeigt.",
-        header_image="jonathan.jpg",
-        show_apps=False,
-        is_johnny=True
-    )
+    return render_template('jonathan.html')
+
+@app.route('/dashboard')
+def dashboard():
+    # IP-Adresse und User-Agent des aktuellen Besuchers
+    user_ip = request.remote_addr
+    user_agent = parse(request.headers.get('User-Agent'))
+
+    # Geräteinformationen analysieren
+    device_type = "Mobile" if user_agent.is_mobile else "Tablet" if user_agent.is_tablet else "Desktop"
+    browser = user_agent.browser.family
+    os = user_agent.os.family
+
+    # Speichere die Infos
+    visitors.append({
+        "ip": user_ip,
+        "device": device_type,
+        "browser": browser,
+        "os": os
+    })
+
+    return render_template("dashboard.html", visitors=visitors)
+
+@app.route('/datenschutz')
+def datenschutz():
+    return render_template('datenschutz.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
