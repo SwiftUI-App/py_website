@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div style="display: flex; align-items: center;">
+            <a href="/">
+                <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo" class="logo">
+            </a>
+            <nav class="header-links">
+                <a href="/">Home</a>
+                <a href="/macos">MacOS</a>
+                <a href="/windows">Windows</a>
+            </nav>
+        </div>
+        <div>
+            <a href="/login" class="login">Abmelden</a>
+        </div>
+    </header>
+
+    <main>
+        <h1>Dashboard</h1>
+        <p>Hier siehst du, wer auf die Seite zugegriffen hat:</p>
+
+        <!-- Tabelle für Besucherinformationen -->
+        <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+            <thead>
+                <tr>
+                    <th style="border: 1px solid white; padding: 8px;">IP-Adresse</th>
+                    <th style="border: 1px solid white; padding: 8px;">Gerät</th>
+                    <th style="border: 1px solid white; padding: 8px;">Browser</th>
+                    <th style="border: 1px solid white; padding: 8px;">Betriebssystem</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for visitor in visitors %}
+                <tr>
+                    <td style="border: 1px solid white; padding: 8px;">{{ visitor.ip }}</td>
+                    <td style="border: 1px solid white; padding: 8px;">{{ visitor.device }}</td>
+                    <td style="border: 1px solid white; padding: 8px;">{{ visitor.browser }}</td>
+                    <td style="border: 1px solid white; padding: 8px;">{{ visitor.os }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        &copy; 2024 JR_website. Alle Rechte vorbehalten.
+         <a href="/datenschutz" class="footer-link">Datenschutz</a>
+    </footer>
+</body>
+</html>
