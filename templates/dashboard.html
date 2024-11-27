@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>MacOS-Seite</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
@@ -14,40 +14,35 @@
             </a>
             <nav class="header-links">
                 <a href="/">Home</a>
-                <a href="/macos">MacOS</a>
+                <a href="/macos" class="active">MacOS</a>
                 <a href="/windows">Windows</a>
             </nav>
         </div>
         <div>
-            <a href="/login" class="login">Abmelden</a>
+            <a href="/login" class="login">Anmelden</a>
         </div>
     </header>
 
-    <main>
-        <h1>Dashboard</h1>
-        <p>Hier siehst du, wer auf die Seite zugegriffen hat:</p>
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='images/dashboard.jpg') }}" alt="Dashboard Header Image">
+        <div class="header-content">
+            <h1>Dashboard</h1>
+            <p>Erfahre mehr über die Aktivitäten auf der Website.</p>
+        </div>
+    </div>
 
-        <!-- Tabelle für Besucherinformationen -->
-        <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
-            <thead>
-                <tr>
-                    <th style="border: 1px solid white; padding: 8px;">IP-Adresse</th>
-                    <th style="border: 1px solid white; padding: 8px;">Gerät</th>
-                    <th style="border: 1px solid white; padding: 8px;">Browser</th>
-                    <th style="border: 1px solid white; padding: 8px;">Betriebssystem</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for visitor in visitors %}
-                <tr>
-                    <td style="border: 1px solid white; padding: 8px;">{{ visitor.ip }}</td>
-                    <td style="border: 1px solid white; padding: 8px;">{{ visitor.device }}</td>
-                    <td style="border: 1px solid white; padding: 8px;">{{ visitor.browser }}</td>
-                    <td style="border: 1px solid white; padding: 8px;">{{ visitor.os }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <main>
+        <section>
+            <h2>MacOS Apps</h2>
+            <p>Unsere MacOS-Apps bieten dir einfache Bedienung und leistungsstarke Funktionen.</p>
+
+            <!-- Download-Button für MacOS, nach rechts verschoben und dezenter -->
+            <div class="download-btn-container">
+                <a href="{{ url_for('static', filename='downloads/gravital.dmg') }}" download>
+                    <button class="download-btn">Gravital für MacOS herunterladen</button>
+                </a>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -56,3 +51,4 @@
     </footer>
 </body>
 </html>
+
