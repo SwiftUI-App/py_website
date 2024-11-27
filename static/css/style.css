@@ -45,6 +45,7 @@ header {
 .header-links a:hover {
     background-color: #555; /* Dunkleres Grau beim Hover */
     color: white;
+    text-decoration: none;
 }
 
 /* Login-Link */
