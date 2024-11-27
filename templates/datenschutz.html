@@ -5,6 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Datenschutz</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        /* Stil für den Hauptinhalt */
+        main {
+            padding: 20px;
+            background-color: #000; /* Schwarzer Hintergrund */
+        }
+
+        section {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #333; /* Grauer Hintergrund, gleich wie der Link-Header */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            padding: 20px 30px;
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+            color: white; /* Weiße Überschriften */
+            border-bottom: 2px solid #007BFF; /* Farbige Linie unter Überschriften */
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        section p {
+            font-size: 1.1rem;
+            color: white; /* Weißer Text */
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        section ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        section ul li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: white; /* Weiße Listenpunkte */
+        }
+
+        a {
+            color: #007BFF; /* Dezentes Hellblau für Links */
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        p a {
+            font-weight: bold;
+        }
+
+        /* Akzentuierte Boxen für wichtige Informationen */
+        .info-box {
+            background-color: #555; /* Ein helleres Grau für Info-Boxen */
+            border-left: 4px solid #007BFF;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            color: white; /* Weißer Text */
+        }
+
+        .info-box strong {
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -38,9 +108,11 @@
 
             <h2>2. Verantwortlicher</h2>
             <p>Verantwortlicher für die Verarbeitung der personenbezogenen Daten auf dieser Website ist:</p>
-            <p><strong>JR_website</strong><br>
-               Adresse: Musterstraße 123, 12345 Musterstadt<br>
-               E-Mail: <a rueckl.jonathan@icloud.com">info@jrwebsite.de</a></p>
+            <div class="info-box">
+                <strong>JR_website</strong><br>
+                Adresse: Musterstraße 123, 12345 Musterstadt<br>
+                E-Mail: <a href="mailto:rueckl.jonathan@icloud.com">rueckl.jonathan@icloud.com</a>
+            </div>
 
             <h2>3. Erhebung und Verarbeitung von Daten</h2>
             <p>Personenbezogene Daten werden nur dann erhoben, wenn du uns diese freiwillig zur Verfügung stellst, z.B. durch das Ausfüllen von Formularen oder bei der Anmeldung zum Newsletter.</p>
@@ -82,19 +154,6 @@
                 <li>Der Verarbeitung deiner personenbezogenen Daten zu widersprechen.</li>
                 <li>Die Übertragung deiner personenbezogenen Daten in einem strukturierten, gängigen und maschinenlesbaren Format zu verlangen.</li>
             </ul>
-
-            <h2>8. Weitergabe von Daten an Dritte</h2>
-            <p>Wir geben deine personenbezogenen Daten nur dann an Dritte weiter, wenn dies gesetzlich erlaubt oder notwendig ist (z.B. an Dienstleister, die uns bei der Bereitstellung der Website unterstützen) oder wenn du ausdrücklich eingewilligt hast.</p>
-
-            <h2>9. Sicherheit der Daten</h2>
-            <p>Wir ergreifen alle notwendigen technischen und organisatorischen Maßnahmen, um deine personenbezogenen Daten vor Verlust, Missbrauch und unbefugtem Zugriff zu schützen.</p>
-
-            <h2>10. Änderungen der Datenschutzerklärung</h2>
-            <p>Wir behalten uns vor, diese Datenschutzerklärung jederzeit anzupassen, um sie an aktuelle rechtliche Anforderungen oder Änderungen unserer Leistungen anzupassen. Die jeweils aktuelle Version ist auf dieser Seite verfügbar.</p>
-
-            <h2>11. Kontakt</h2>
-            <p>Wenn du Fragen zum Thema Datenschutz hast, kannst du dich gerne an uns wenden:</p>
-            <p>Email: <a href="rueckl.jonathan@icloud.com">info@jrwebsite.de</a></p>
         </section>
     </main>
 
