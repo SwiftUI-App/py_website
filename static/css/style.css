@@ -1,0 +1,262 @@
+/* Allgemeine Stilregeln */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #111; /* Dunkler Hintergrund */
+    color: white; /* Weißer Text */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Seite soll mindestens die gesamte Höhe des Viewports einnehmen */
+}
+
+/* Header-Stile */
+header {
+    background-color: #333; /* Grauer Hintergrund */
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between; /* Platz zwischen den Elementen links/rechts */
+    align-items: center; /* Vertikale Zentrierung */
+}
+
+/* Logo */
+.logo {
+    width: 40px; /* Kleinere Breite */
+    height: auto;
+}
+
+/* Navigation */
+.header-links {
+    display: flex;
+    gap: 15px; /* Abstand zwischen den Links */
+}
+
+.header-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.header-links a:hover {
+    background-color: #555; /* Dunkleres Grau beim Hover */
+    color: white;
+    text-decoration: none;
+}
+
+/* Login-Link */
+.login {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.login:hover {
+    background-color: #555;
+}
+
+/* Bildcontainer */
+.image-container {
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    height: 400px; /* Feste Höhe des Containers */
+    background-color: #000; /* Fallback für leeres Bild */
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Bild passt sich dem Container an */
+    display: block;
+}
+
+/* Text auf dem Bild */
+.header-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    z-index: 10;
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 3em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Schatten für bessere Lesbarkeit */
+}
+
+.header-content p {
+    font-size: 1.2em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Footer */
+footer {
+    background-color: #222;
+    text-align: center;
+    padding: 10px 20px;
+    color: white;
+    font-size: 0.9em;
+    position: fixed; /* Footer wird fixiert */
+    bottom: 0; /* Immer am unteren Rand */
+    left: 0;
+    width: 100%; /* Breite auf 100% setzen */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5); /* Schatten nach oben */
+}
+
+/* Footer-Link - passt den Link optisch an */
+footer a {
+    color: inherit; /* Erbt die Farbe vom umgebenden Text (weiß) */
+    text-decoration: none; /* Entfernt die Unterstreichung */
+    font-size: inherit; /* Erbt die Schriftgröße des umgebenden Texts */
+    font-family: inherit; /* Erbt die Schriftart des umgebenden Texts */
+    font-weight: inherit; /* Erbt das Gewicht des Texts */
+}
+
+/* Entfernt den Hover-Effekt */
+footer a:hover {
+    text-decoration: none; /* Auch beim Hover keine Unterstreichung */
+    color: inherit; /* Bleibt die gleiche Farbe */
+}
+
+/* Zentrierter Download-Button Container */
+.download-btn-container {
+    text-align: left; /* Button nach rechts verschieben */
+    margin-top: 20px;
+}
+
+/* Dezenter Download-Button */
+.download-btn {
+    background-color: #444;  /* Dunkler Hintergrund */
+    color: white;             /* Weißer Text */
+    font-size: 1.1em;         /* Etwas kleinere Schrift */
+    padding: 12px 25px;       /* Weniger Padding */
+    border: none;
+    border-radius: 8px;       /* Abgerundete Ecken */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Weicher Übergang für Hover */
+    display: inline-block;
+    text-align: center;
+}
+
+.download-btn:hover {
+    background-color: #333;  /* Dunkleres Grau beim Hover */
+    transform: scale(1.03);   /* Leichte Vergrößerung beim Hover */
+}
+
+.download-btn:active {
+    background-color: #222;  /* Noch dunkleres Grau beim Klicken */
+}
+
+/* Login-Formular */
+.login-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Absolute Zentrierung */
+    width: 90%;
+    max-width: 400px;
+    background-color: #666; /* Gleiche Hintergrundfarbe wie der Header */
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Innenabstand der Elemente */
+.login-container .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.login-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ddd; /* Hellerer Hintergrund für Eingabefelder */
+    color: #333; /* Dunkler Text */
+    font-size: 1em;
+}
+
+.login-container input:focus {
+    outline: none;
+    background-color: #eee; /* Hellgrau bei Fokus */
+}
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #444; /* Dunkelgrauer Hintergrund */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-container button:hover {
+    background-color: #555; /* Hellgrauer Hover-Effekt */
+}
+/* Dropdown-Menü für Jonathan */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-link {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.dropdown-link:hover {
+    background-color: #555;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    z-index: 1;
+    border-radius: 4px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #555;
+}
+
+/* Zeigt das Dropdown-Menü, wenn der Link darüber schwebt */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
