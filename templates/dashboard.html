@@ -18,6 +18,8 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             padding: 20px;
+            padding-bottom: 50px; /* Fügt Abstand zum Footer hinzu */
+            margin-bottom: 30px; /* Fügt Abstand zwischen dem grauen Kasten und dem Footer hinzu */
         }
 
         h2 {
@@ -28,10 +30,16 @@
             margin-bottom: 20px;
         }
 
+        /* Neue Klasse für scrollbare Tabelle */
+        .scrollable-table {
+            max-height: 450px; /* Max. Höhe, um etwa 15 Zeilen anzuzeigen (Anpassung je nach Zeilenhöhe) */
+            overflow-y: auto;  /* Aktiviert den vertikalen Scrollbalken */
+            display: block;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
             background-color: white;
             border-radius: 8px;
             overflow: hidden;
@@ -43,9 +51,13 @@
             border-bottom: 1px solid #ddd;
         }
 
+        /* Fixiere die Kopfzeile */
         th {
             background-color: #007BFF;
             color: white;
+            position: sticky;
+            top: 0; /* Fixiert die Kopfzeile oben */
+            z-index: 1; /* Stellt sicher, dass die Kopfzeile über den Zeilen liegt */
         }
 
         tr:hover {
@@ -137,7 +149,6 @@
                     <div class="dropdown-content">
                         <a href="/jonathan">Jonathan's Seite</a>
                         <a href="/dashboard">Dashboard</a>
-                        <a href="/advent">Adventskalender</a>
                         <a href="/logout">Abmelden</a>
                     </div>
                 </div>
@@ -153,17 +164,18 @@
     </div>
 </header>
 
-    <div class="image-container">
-        <img src="{{ url_for('static', filename='images/dashboard.jpg') }}" alt="Dashboard Header Image">
-        <div class="header-content">
-            <h1>Website-Aktivitäten</h1>
-            <p>Hier siehst du die Aktivitäten der Nutzer auf deiner Webseite.</p>
-        </div>
+<div class="image-container">
+    <img src="{{ url_for('static', filename='images/dashboard.jpg') }}" alt="Dashboard Header Image">
+    <div class="header-content">
+        <h1>Website-Aktivitäten</h1>
+        <p>Hier siehst du die Aktivitäten der Nutzer auf deiner Webseite.</p>
     </div>
+</div>
 
-    <main>
-        <section>
-            <h2>Aktivitäten-Log</h2>
+<main>
+    <section>
+        <h2>Aktivitäten-Log</h2>
+        <div class="scrollable-table">
             <table>
                 <thead>
                     <tr>
@@ -192,41 +204,42 @@
                     {% endfor %}
                 </tbody>
             </table>
-        </section>
-    </main>
-
-    <footer>
-        &copy; 2024 JR_website. Alle Rechte vorbehalten.
-        <a href="/datenschutz" class="footer-link">Datenschutz</a>
-    </footer>
-
-    <div class="modal" id="detailsModal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h3>Details</h3>
-            <p><strong>IP-Adresse:</strong> <span id="ip"></span></p>
-            <p><strong>Seite aufgerufen:</strong> <span id="page"></span></p>
-            <p><strong>Download:</strong> <span id="download"></span></p>
-            <p><strong>Gerät:</strong> <span id="device"></span></p>
-            <p><strong>Browser:</strong> <span id="browser"></span></p>
-            <p><strong>Zeitstempel:</strong> <span id="timestamp"></span></p>
         </div>
+    </section>
+</main>
+
+<footer>
+    &copy; 2024 JR_website. Alle Rechte vorbehalten.
+    <a href="/datenschutz" class="footer-link">Datenschutz</a>
+</footer>
+
+<div class="modal" id="detailsModal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h3>Details</h3>
+        <p><strong>IP-Adresse:</strong> <span id="ip"></span></p>
+        <p><strong>Seite aufgerufen:</strong> <span id="page"></span></p>
+        <p><strong>Download:</strong> <span id="download"></span></p>
+        <p><strong>Gerät:</strong> <span id="device"></span></p>
+        <p><strong>Browser:</strong> <span id="browser"></span></p>
+        <p><strong>Zeitstempel:</strong> <span id="timestamp"></span></p>
     </div>
+</div>
 
-    <script>
-        function openModal(ip, page, download, device, browser, timestamp) {
-            document.getElementById('ip').innerText = ip;
-            document.getElementById('page').innerText = page;
-            document.getElementById('download').innerText = download;
-            document.getElementById('device').innerText = device;
-            document.getElementById('browser').innerText = browser;
-            document.getElementById('timestamp').innerText = timestamp;
-            document.getElementById('detailsModal').style.display = 'flex';
-        }
+<script>
+    function openModal(ip, page, download, device, browser, timestamp) {
+        document.getElementById('ip').innerText = ip;
+        document.getElementById('page').innerText = page;
+        document.getElementById('download').innerText = download;
+        document.getElementById('device').innerText = device;
+        document.getElementById('browser').innerText = browser;
+        document.getElementById('timestamp').innerText = timestamp;
+        document.getElementById('detailsModal').style.display = 'flex';
+    }
 
-        function closeModal() {
-            document.getElementById('detailsModal').style.display = 'none';
-        }
-    </script>
+    function closeModal() {
+        document.getElementById('detailsModal').style.display = 'none';
+    }
+</script>
 </body>
 </html>
