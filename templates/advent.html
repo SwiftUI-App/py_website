@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MacOS-Seite</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        /* Gesamtes Layout */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #111; /* Dunkler Hintergrund */
+            color: white; /* Weißer Text */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Seite soll mindestens die gesamte Höhe des Viewports einnehmen */
+        }
+
+        main {
+            flex: 1; /* Hauptinhalt nimmt verbleibenden Platz ein */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            margin-bottom: 50px; /* Abstand zum Footer */
+        }
+
+        .door {
+            background-color: rgb(245, 67, 54);
+            color: white;
+            height: 120px;
+            width: 120px;
+            margin: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 200ms ease-in-out;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .door:hover {
+            background-color: rgb(53, 110, 18);
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            text-align: center;
+            padding: 10px 20px;
+            color: white;
+            font-size: 0.9em;
+            position: fixed; /* Footer wird fixiert */
+            bottom: 0; /* Immer am unteren Rand */
+            left: 0;
+            width: 100%; /* Breite auf 100% setzen */
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5); /* Schatten nach oben */
+        }
+    </style>
+</head>
+<body>
+<!-- Header -->
+<header>
+    <div style="display: flex; align-items: center;">
+        <a href="/">
+            <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo" class="logo">
+        </a>
+        <nav class="header-links">
+            <a href="/">Home</a>
+            <a href="/macos" class="active">MacOS</a>
+            <a href="/windows">Windows</a>
+            {% if session.get('username') %}
+                <!-- Jonathan-Link mit Dropdown-Menü -->
+                <div class="dropdown">
+                    <a href="#" class="dropdown-link">Jonathan</a>
+                    <div class="dropdown-content">
+                        <a href="/jonathan">Jonathan's Seite</a>
+                        <a href="/dashboard">Dashboard</a>
+                        <a href="/advent">Adventskalender</a>
+                        <a href="/logout">Abmelden</a>
+                    </div>
+                </div>
+            {% endif %}
+        </nav>
+    </div>
+    <div>
+        {% if session.get('username') %}
+            <a href="/logout" class="login">Abmelden</a>
+        {% else %}
+            <a href="/login" class="login">Anmelden</a>
+        {% endif %}
+    </div>
+</header>
+
+<div class="image-container">
+    <img src="{{ url_for('static', filename='images/advent.jpg') }}" alt="Advent Image">
+    <div class="header-content">
+        <h1>Willkommen beim Adventskalender!</h1>
+        <p>Öffne jeden Tag ein neues Türchen und entdecke, was sich dahinter versteckt!</p>
+    </div>
+</div>
+
+<!-- Adventskalender-Inhalt -->
+<main>
+    <div onclick="door1(this)" class="door">1</div>
+    <div onclick="door2(this)" class="door">2</div>
+    <div onclick="door3(this)" class="door">3</div>
+    <div onclick="door4(this)" class="door">4</div>
+    <div onclick="door5(this)" class="door">5</div>
+    <div onclick="door6(this)" class="door">6</div>
+    <div onclick="door7(this)" class="door">7</div>
+    <div onclick="door8(this)" class="door">8</div>
+    <div onclick="door9(this)" class="door">9</div>
+    <div onclick="door10(this)" class="door">10</div>
+    <div onclick="door11(this)" class="door">11</div>
+    <div onclick="door12(this)" class="door">12</div>
+    <div onclick="door13(this)" class="door">13</div>
+    <div onclick="door14(this)" class="door">14</div>
+    <div onclick="door15(this)" class="door">15</div>
+    <div onclick="door16(this)" class="door">16</div>
+    <div onclick="door17(this)" class="door">17</div>
+    <div onclick="door18(this)" class="door">18</div>
+    <div onclick="door19(this)" class="door">19</div>
+    <div onclick="door20(this)" class="door">20</div>
+    <div onclick="door21(this)" class="door">21</div>
+    <div onclick="door22(this)" class="door">22</div>
+    <div onclick="door23(this)" class="door">23</div>
+    <div onclick="door24(this)" class="door">24</div>
+</main>
+
+<!-- Footer -->
+<footer>
+    &copy; 2024 JR_website. Alle Rechte vorbehalten.
+    <a href="/datenschutz" class="footer-link">Datenschutz</a>
+</footer>
+
+<!-- JavaScript für Türchen-Funktion -->
+<script>
+    function door1(element){
+        element.innerHTML = 'Nimm dir etwas Ruhe und du wirst mehr Energie haben.ad';
+        element.style.fontSize = '14px';
+        element.style.backgroundColor = 'rgb(53, 110, 18)';
+        element.style.textAlign = "center";
+    }
+    
+    function door2(element){
+        element.innerHTML = 'Lass die kleinen Momente des Glücks nicht an dir vorbeiziehen.';
+        element.style.fontSize = '14px';
+        element.style.backgroundColor = 'rgb(53, 110, 18)';
+        element.style.textAlign = "center";
+    }
+
+    function door3(element){
+        element.innerHTML = 'Es ist Zeit, dich selbst mit Güte zu behandeln.';
+        element.style.fontSize = '14px';
+        element.style.backgroundColor = 'rgb(53, 110, 18)';
+        element.style.textAlign = "center";
+    }
+
+     function door4(element){
+        element.innerHTML = 'Freundlichkeit ist das schönste Geschenk, das du geben kannst.';
+        element.style.fontSize = '14px';
+        element.style.backgroundColor = 'rgb(53, 110, 18)';
+        element.style.textAlign = "center";
+    }
+
+    function door5(element){
+        element.innerHTML = "Ein Lächeln ist das beste Accessoire, das du tragen kannst.";
+        element.style.fontSize = '14px';
+        element.style.backgroundColor = 'rgb(53, 110, 18)';
+        element.style.textAlign = "center";
+    }
+
+    function door6(element){
+        element.innerHTML = "Ein Lächeln ist das beste Accessoire, das du tragen kannst.";
+        element.style.fontSize = '14px';
+        element.style.backgroundColor = 'rgb(53, 110, 18)';
+        element.style.textAlign = "center";
+    }
+
+    function door7(element){
+        element.innerHTML = 'Jeder Tag ist eine neue Gelegenheit, etwas Schönes zu erleben.';
+        element.style.fontSize = '14px';
+        element.style.backgroundColor = 'rgb(53, 110, 18)';
+        element.style.textAlign = "center";
+    }
+
+    function door8(element){
+        element.innerHTML = 'Erlaube dir, deine eigenen Erfolge zu feiern.';
+        element.style.fontSize = '14px';
+        element.style.backgroundColor = 'rgb(53, 110, 18)';
+        element.style.textAlign = "center";
+    }
+
+    function door9(element){
+        element.innerHTML = 'Glück entsteht oft durch Aufmerksamkeit in kleinen Dingen.';
+        element.style.fontSize = '14px';
+        element.style.backgroundColor = 'rgb(53, 110, 18)';
+        element.style.textAlign = "center";
+    }
+
+    function door10(element){
+        element.innerHTML = 'Eine positive Einstellung verändert alles.';
+        element.style.fontSize = '14px';
+        element.style.backgroundColor = 'rgb(53, 110, 18)';
+        element.style.textAlign = "center";
+    }
+
+    function door11(element){
+        element.innerHTML = 'Jeder Tag bringt neue Möglichkeiten, dein Bestes zu geben.';
+        element.style.fontSize = '14px';
+        element.style.backgroundColor = 'rgb(53, 110, 18)';
+        element.style.textAlign = "center";
+    }
+
+    function door12(element){
+        element.innerHTML = 'Der Winter erinnert uns daran, innezuhalten und nachzudenken.';
+        element.style.fontSize = '14px';
+        element.style.backgroundColor = 'rgb(53, 110, 18)';
+        element.style.textAlign = "center";
+    }
+
+    function door13(element){
+        element.innerHTML = 'Veränderungen beginnen mit kleinen Schritten.';
+        element.style.fontSize = '14px';
+        element.style.backgroundColor = 'rgb(53, 110, 18)';
+        element.style.textAlign = "center";
+    }
+
+    function door14(element){
+        element.innerHTML = 'Erlaube dir, einfach nur du selbst zu sein.';
+        element.style.fontSize = '14px';
+        element.style.backgroundColor = 'rgb(53, 110, 18)';
+        element.style.textAlign = "center";
+    }
+
+    function door15(element){
+        element.innerHTML = 'Freude steckt in den einfachsten Dingen.';
+        element.style.fontSize = '14px';
+        element.style.backgroundColor = 'rgb(53, 110, 18)';
+        element.style.textAlign = "center";
+    }
+
+    function door16(element){
+        element.innerHTML = 'Glaube an die Magie des Neuanfangs.';
+        element.style.fontSize = '14px';
+        element.style.backgroundColor = 'rgb(53, 110, 18)';
+        element.style.textAlign = "center";
+    }
+
+    function door17(element){
+        element.innerHTML = 'Ein Schritt nach dem anderen führt ans Ziel.';
+        element.style.fontSize = '14px';
+        element.style.backgroundColor = 'rgb(53, 110, 18)';
+        element.style.textAlign = "center";
+    }
+
+    function door18(element){
+        element.innerHTML = 'Dankbarkeit verwandelt alltägliche Momente in Glück.';
+        element.style.fontSize = '14px';
+        element.style.backgroundColor = 'rgb(53, 110, 18)';
+        element.style.textAlign = "center";
+    }
+
+    function door19(element){
+        element.innerHTML = 'Nimm dir Zeit, um die Schönheit des Augenblicks zu genießen.';
+        element.style.fontSize = '14px';
+        element.style.backgroundColor = 'rgb(53, 110, 18)';
+        element.style.textAlign = "center";
+    }
+
+    function door20(element){
+        element.innerHTML = 'Vertrauen ist der Schlüssel zu innerem Frieden.';
+        element.style.fontSize = '14px';
+        element.style.backgroundColor = 'rgb(53, 110, 18)';
+        element.style.textAlign = "center";
+    }
+
+    function door21(element){
+        element.innerHTML = 'Erinnerungen sind der wahre Schatz des Lebens.';
+        element.style.fontSize = '14px';
+        element.style.backgroundColor = 'rgb(53, 110, 18)';
+        element.style.textAlign = "center";
+    }
+
+    function door22(element){
+        element.innerHTML = 'Jede kleine Geste der Freundlichkeit zählt.';
+        element.style.fontSize = '14px';
+        element.style.backgroundColor = 'rgb(53, 110, 18)';
+        element.style.textAlign = "center";
+    }
+
+    function door23(element){
+        element.innerHTML = 'Verbringe Zeit mit den Menschen, die dir wichtig sind.';
+        element.style.fontSize = '14px';
+        element.style.backgroundColor = 'rgb(53, 110, 18)';
+        element.style.textAlign = "center";
+    }
+
+    function door24(element){
+        element.innerHTML = 'Die besten Geschenke im Leben sind nicht materiell.';
+        element.style.fontSize = '14px';
+        element.style.backgroundColor = 'rgb(53, 110, 18)';
+        element.style.textAlign = "center";
+    }
+
+// Weitere Funktionen können hier hinzugefügt werden
+</script>
+</body>
+</html>
