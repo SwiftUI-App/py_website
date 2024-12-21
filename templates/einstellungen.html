@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<style>
+    main {
+        padding: 20px;
+    }
+
+    .settings .button-container {
+        display: flex;
+        gap: 15px;
+    }
+
+    .settings button {
+        padding: 12px 25px;
+        font-size: 1.2rem;
+        color: #fff;
+        background-color: #ff4b5c;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .settings button:hover {
+        background-color: #e84150;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(255, 75, 92, 0.4);
+    }
+</style>
+<body>
+<!-- Header -->
+<header>
+    <div style="display: flex; align-items: center;">
+        <a href="/">
+            <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo" class="logo">
+        </a>
+        <nav class="header-links">
+            <a href="/">Home</a>
+            <a href="/macos">MacOS</a>
+            <a href="/windows">Windows</a>
+            {% if session.get('username') %}
+                <div class="dropdown">
+                    <a href="#" class="dropdown-link">Jonathan</a>
+                    <div class="dropdown-content">
+                        <a href="/advent">Adventskalender</a>
+                        <a href="/jonathan">Jonathans Seite</a>
+                        <a href="/dashboard">Dashboard</a>
+                        <a href="/einstellungen" class="active">Einstellungen</a>
+                        <a href="/logout">Abmelden</a>
+                    </div>
+                </div>
+            {% endif %}
+        </nav>
+    </div>
+    <div>
+        {% if session.get('username') %}
+            <a href="/logout" class="login">Abmelden</a>
+        {% else %}
+            <a href="/login" class="login">Anmelden</a>
+        {% endif %}
+    </div>
+</header>
+
+<!-- Hauptbereich -->
+<div class="image-container">
+    <img src="{{ url_for('static', filename='images/jonathan.jpg') }}" alt="Home Image">
+    <div class="header-content">
+        <h1>Einstellungen</h1>
+        <p>Verwalte deine persönlichen Einstellungen.</p>
+    </div>
+</div>
+
+<main>
+    <section class="settings">
+        <h2>Einstellungen</h2>
+        <p>Hier kannst du die Website anpassen oder Funktionen testen:</p>
+        <div class="button-container">
+            <button onclick="window.location.href='/test-404'">404-Seite testen</button>
+            <button onclick="window.location.href='/'">Weitere Optionen</button>
+        </div>
+    </section>
+</main>
+
+<footer>
+    &copy; 2024 JR_website. Alle Rechte vorbehalten.
+    <a href="/datenschutz" class="footer-link">Datenschutz</a>
+</footer>
+</body>
+</html>

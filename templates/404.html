@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Seite nicht gefunden</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #fff;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 20px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        h1 {
+            font-size: 6rem;
+            margin: 0;
+            color: #ff4b5c;
+            letter-spacing: -3px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin: 10px 0 30px;
+            color: #b0c4de;
+        }
+
+        a {
+            display: inline-block;
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            color: #fff;
+            background: #ff4b5c;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(255, 75, 92, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            background: #e84150;
+            box-shadow: 0 6px 20px rgba(255, 75, 92, 0.5);
+            transform: translateY(-2px);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 30px 0;
+            opacity: 0.9;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>404</h1>
+        <p>Die gesuchte Seite wurde nicht gefunden.</p>
+        <img src="{{ url_for('static', filename='images/404.jpg') }}" alt="404 Illustration">
+        <a href="/">Zurück zur Startseite</a>
+    </div>
+</body>
+</html>
